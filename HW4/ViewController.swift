@@ -9,17 +9,70 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var carBrandLabel: UILabel!
+    @IBOutlet weak var hasDriverLabel: UILabel!
+    @IBOutlet weak var petrolLabel: UILabel!
+    @IBOutlet weak var accelerationLabel: UILabel!
+    @IBOutlet weak var moneyLabel: UILabel!
+
+
+
+    let bmw = Car(brand: "BMW", petrol: 70, acceleration: 50, money: 100, driver: true)
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+//      Task 1
+//        bmw.startDriving()
+//        print(bmw.discription)
+//
+//        bmw.gasStation()
+//        print(bmw.discription)
+//
+//        bmw.policeStoped()
+//        print(bmw.discription)
+//
+//        bmw.accident()
+//        print(bmw.discription)
+
+//      Task 2
+        updateUI()
+
+        }
+
+    func updateUI () {
+        carBrandLabel.text = bmw.brand
+        hasDriverLabel.text = "The car has driver = \(bmw.driver)"
+        petrolLabel.text = "\(bmw.petrol)"
+        accelerationLabel.text = "\(bmw.acceleration)"
+        moneyLabel.text = "\(bmw.money)"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func StartDriving(_ sender: Any) {
+         bmw.startDriving()
+         updateUI()
+    }
+
+    @IBAction func gasStation(_ sender: Any) {
+        bmw.gasStation()
+        updateUI()
+    }
+
+    @IBAction func policeStopped(_ sender: Any) {
+        bmw.policeStoped()
+        updateUI()
+    }
+
+    @IBAction func accident(_ sender: Any) {
+        bmw.accident()
+        updateUI()
     }
 
 
-}
+    }
+
+
+
+
 
