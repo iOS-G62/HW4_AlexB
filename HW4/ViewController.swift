@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         moneyLabel.text = "\(bmw.money)"
     }
 
-    @IBAction func StartDriving(_ sender: Any) {
+    @IBAction func startDriving(_ sender: Any) {
          bmw.startDriving()
          updateUI()
     }

@@ -16,7 +16,7 @@ class Car {
     var acceleration: Int
     var money: Int
     var driver: Bool
-//    Acceleration depends not only on the specifications of the car but also on the skills of the driver
+    //    Acceleration depends not only on the specifications of the car but also on the skills of the driver
     private let skillsOfDriver: Int
 
     var discription: String {
@@ -34,20 +34,24 @@ class Car {
         self.acceleration = acceleration
         self.money = money
         self.driver = driver
-        self.skillsOfDriver = Int(arc4random_uniform(5) + 1)
+        self.skillsOfDriver = Int(arc4random_uniform(2) + 1)
+    }
+
+    private func carHasDriver() {
+        if acceleration > 40 {
+            //  If the car is fast, then fuel consumption is greater and acceleration is greater
+            self.petrol -= 20
+            self.acceleration += 40 * skillsOfDriver
+        } else if acceleration <= 40 {
+            //  If the car is not fast, then the consumption is less and the acceleration is less
+            self.petrol -= 10
+            self.acceleration += 20 * skillsOfDriver
+        }
     }
 
     func startDriving() {
         if driver == true {
-            if acceleration > 40 {
-//                If the car is fast, then fuel consumption is greater and acceleration is greater
-                self.petrol -= 20
-                self.acceleration += 40 * skillsOfDriver
-            } else if acceleration <= 40 {
-//                If the car is not fast, then the consumption is less and the acceleration is less
-                self.petrol -= 10
-                self.acceleration += 20 * skillsOfDriver
-            }
+            carHasDriver()
         } else if driver == false {
             self.petrol = 0
             self.acceleration = 0
@@ -77,7 +81,5 @@ class Car {
         self.petrol += 50
         self.money -= 10
     }
-
-
 
 }
